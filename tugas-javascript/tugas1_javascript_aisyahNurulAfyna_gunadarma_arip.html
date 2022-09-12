@@ -1,0 +1,59 @@
+<script language="javascript">
+    var pegawai ="Ridwan";
+    var jabatan ="Manager";
+    var stat = "Menikah";
+
+    if(jabatan == 'Manager'){
+        gajiPokok = 15000000;
+    }else if(jabatan == 'Asisten Manager'){
+        gajiPokok = 10000000;
+    }else if(jabatan == 'Staff'){
+        gajiPokok = 5000000;
+    }else{
+        gajiPokok = 0;
+    }
+
+    let tunj_jabatan = 0.15 * gajiPokok;
+    let bpjs = 0.10 * gajiPokok;
+
+    let tunj_keluarga = (stat == 'Menikah') ? 0.20 * gajiPokok : 0;
+
+    let totalGaji = gajiPokok + tunj_jabatan + bpjs + tunj_keluarga;
+
+    document.write("Pegawai: " + pegawai + "</br>");
+    document.write("Jabatan: " + jabatan + "</br>");
+    document.write("Status: " + stat + "</br>");
+
+    document.write(`
+    <table border="1" cellpadding="10" cellspacing="2">
+        <thead bgcolor="#ADA3BA">
+            <tr>
+                <th>Data</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gaji Pokok</td>
+                <td align="right">${gajiPokok}</td>
+            </tr>
+            <tr>
+                <td>Tunjab</td>
+                <td align="right">${tunj_jabatan}</td>
+            </tr>
+            <tr>
+                <td>BPJS</td>
+                <td align="right">${bpjs}</td>
+            </tr>
+            <tr>
+                <td>Tunkel</td>
+                <td align="right">${tunj_keluarga}</td>
+            </tr>
+            <tr bgcolor="#ADA3BA">
+                <td>Total Gaji</td>
+                <td align="right">${totalGaji}</td>
+            </tr>
+        </tbody>
+    </table>
+    `);
+</script>
