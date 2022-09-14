@@ -1,0 +1,66 @@
+<table align="center" border="1" cellpadding="10" cellspacing="2">
+    <thead bgcolor="#ADA3BA">
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Jabatan</th>
+            <th>Agama</th>
+            <th>Gaji Pokok</th>
+            <th>Tunjangan Jabatan</th>
+            <th>Tunjangan Kesehatan</th>
+            <th>Gaji Kotor</th>
+            <th>Zakat Profesi</th>
+            <th>Take Home Pay</th>
+        </tr>
+    </thead>
+    <tbody>
+        <script language="javascript">
+            var nomorUrut;
+            for(nomorUrut = 1; nomorUrut <= 100; nomorUrut++){
+                if(nomorUrut <= 25) jabatan = "Manager";
+                else if(nomorUrut > 25 && nomorUrut <=50) jabatan = "Asisten Manager";
+                else if(nomorUrut > 50 && nomorUrut <= 75) jabatan = "Supervisor";            
+                else if(nomorUrut > 75 && nomorUrut <= 100) jabatan = "Staff";
+                else jabatan = "";
+
+                warna = (nomorUrut % 2 == 0 ) ? 'aqua' : 'yellow';
+                agama = (nomorUrut % 2 == 0) ? "Non Muslim" : "Muslim";
+
+                switch (jabatan){
+                case "Manager" : gajiPokok = 15000000; break;
+                case "Asisten Manager" : gajiPokok = 10000000; break;
+                case "Supervisor" : gajiPokok = 7000000; break;
+                case "Staff" : gajiPokok = 4000000; break;
+                default: gajiPokok = 0; break;
+                }
+
+                let tunJabatan = 0.2 * gajiPokok;
+                let tunjKesehatan = 0.1 * gajiPokok;
+                let gajiKotor = gajiPokok + tunJabatan + tunjKesehatan;
+                let zakatProfesi;
+                
+                if(agama == "Muslim" && gajiKotor >= 7000000){
+                zakatProfesi = 0.025 * gajiKotor;
+                }else{
+                    zakatProfesi = 0
+                }
+                
+                let takeHomePay = gajiKotor - zakatProfesi;
+                document.write(`
+                <tr bgcolor=${warna}>
+                    <td>${nomorUrut}</td>
+                    <td>Pegawai ${nomorUrut}</td>
+                    <td>${jabatan}</td>
+                    <td>${agama}</td>
+                    <td>${gajiPokok}</td>
+                    <td>${tunJabatan}</td>
+                    <td>${tunjKesehatan}</td>
+                    <td>${gajiKotor}</td>
+                    <td>${zakatProfesi}</td>
+                    <td>${takeHomePay}</td>
+                </tr>
+                `)
+            }
+        </script>
+    </tbody>
+</table>
