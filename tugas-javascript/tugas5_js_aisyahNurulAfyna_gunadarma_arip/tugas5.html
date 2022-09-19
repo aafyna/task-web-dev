@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kalkulatorku</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container px-5 my-5">
+        <form id="formKalkulator">
+            <div class="form-floating mb-3">
+                <input class="form-control" name="angkaPertama" type="text" placeholder="Angka Pertama" data-sb-validations="required" />
+                <label for="angkaPertama">Angka Pertama</label>
+                <div class="invalid-feedback" data-sb-feedback="angkaPertama:required">Angka Pertama is required.</div>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" name="angkaKedua" type="text" placeholder="Angka Kedua" data-sb-validations="required" />
+                <label for="angkaKedua">Angka Kedua</label>
+                <div class="invalid-feedback" data-sb-feedback="angkaKedua:required">Angka Kedua is required.</div>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" name="hasil" type="text" placeholder="Hasil" data-sb-validations="" disabled />
+                <label for="hasil">Hasil</label>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary btn-lg" value=""  name="tambah" type="button" onclick="perhitungan('tambah')">+</button>
+                <button class="btn btn-warning btn-lg" value=""  name="kurang" type="button" onclick="perhitungan('kurang')">-</button>
+                <button class="btn btn-success btn-lg" value="" name="kali" type="button" onclick="perhitungan('kali')">x</button>
+                <button class="btn btn-danger btn-lg" value="" name="bagi" type="button" onclick="perhitungan('bagi')">/</button>
+                <button class="btn btn-info btn-lg" value="" name="pangkat" type="button" onclick="perhitungan('pangkat')">^</button>
+            </div>
+        </form>
+    </div>
+    <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script language="javascript" src="calc.js"></script>
+  </body>
+</html>
