@@ -1,0 +1,132 @@
+Setting environment for using XAMPP for Windows.
+Aisyah Nurul Afyna@DESKTOP-M86NOFQ c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+-- MENAMPILKAN DATABASE YANG ADA
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| admin_panel        |
+| aplikasi_obat      |
+| basicadmin         |
+| event              |
+| example-app        |
+| homestead          |
+| information_schema |
+| laravel_app        |
+| laravel_lat        |
+| mysales            |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| project2           |
+| pservice           |
+| sales_app          |
+| sales_webapp       |
+| salesapp           |
+| test               |
+| trysalesapp        |
++--------------------+
+20 rows in set (0.078 sec)
+
+-- MEMBUAT DATABASE BARU BERNAMA dbpegawai
+MariaDB [(none)]> CREATE DATABASE dbpegawai;
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| admin_panel        |
+| aplikasi_obat      |
+| basicadmin         |
+| dbpegawai          | --> DATABASE dbpegawai BERHASIL DIBUAT
+| event              |
+| example-app        |
+| homestead          |
+| information_schema |
+| laravel_app        |
+| laravel_lat        |
+| mysales            |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| project2           |
+| pservice           |
+| sales_app          |
+| sales_webapp       |
+| salesapp           |
+| test               |
+| trysalesapp        |
++--------------------+
+21 rows in set (0.001 sec)
+
+-- MASUK KE RUANG DATABASE dbpegawai
+MariaDB [(none)]> USE dbpegawai;
+Database changed
+
+-- MENAMPILKAN TABLE YANG ADA PADA dbpegawai (TABLE KOSONG KARENA MASIH BELUM DIBUAT)
+MariaDB [dbpegawai]> SHOW TABLES;
+Empty set (0.005 sec)
+
+-- MEMBUAT TABLE BARU DI DATABASE dbpegawai DENGAN NAMA divisi
+MariaDB [dbpegawai]> CREATE TABLE divisi (
+    -> id int primary key auto_increment,
+    -> nama varchar(30) not null unique);
+Query OK, 0 rows affected (0.042 sec)
+
+-- MEMBUAT TABLE BARU DI DATABASE dbpegawai DENGAN NAMA pegawai
+MariaDB [dbpegawai]> CREATE TABLE pegawai (
+    -> id int primary key auto_increment,
+    -> nip char(5) not null unique,
+    -> nama varchar(30) not null,
+    -> gender enum('L','P') not null,
+    -> tmp_lahir varchar(30) not null,
+    -> tgl_lahir date not null,
+    -> id_divisi int not null references divisi(id),
+    -> alamat text);
+Query OK, 0 rows affected (0.036 sec)
+
+-- MENAMPILKAN TABLE YANG TELAH DIBUAT PADA DATABASE dbpegawai
+MariaDB [dbpegawai]> SHOW TABLES;
++---------------------+
+| Tables_in_dbpegawai |
++---------------------+
+| divisi              |
+| pegawai             |
++---------------------+
+2 rows in set (0.001 sec)
+
+-- MENAMPILKAN DESKRIPSI/STRUKTUR KOLOM PADA TABEL divisi
+MariaDB [dbpegawai]> DESCRIBE divisi;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nama  | varchar(30) | NO   | UNI | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.026 sec)
+
+-- MENAMPILKAN DESKRIPSI/STRUKTUR KOLOM PADA TABEL pegawai
+MariaDB [dbpegawai]> DESCRIBE pegawai;
++-----------+---------------+------+-----+---------+----------------+
+| Field     | Type          | Null | Key | Default | Extra          |
++-----------+---------------+------+-----+---------+----------------+
+| id        | int(11)       | NO   | PRI | NULL    | auto_increment |
+| nip       | char(5)       | NO   | UNI | NULL    |                |
+| nama      | varchar(30)   | NO   |     | NULL    |                |
+| gender    | enum('L','P') | NO   |     | NULL    |                |
+| tmp_lahir | varchar(30)   | NO   |     | NULL    |                |
+| tgl_lahir | date          | NO   |     | NULL    |                |
+| id_divisi | int(11)       | NO   |     | NULL    |                |
+| alamat    | text          | YES  |     | NULL    |                |
++-----------+---------------+------+-----+---------+----------------+
+8 rows in set (0.022 sec)
